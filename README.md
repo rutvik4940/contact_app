@@ -20,5 +20,6 @@ samples, guidance on mobile development, and a full API reference.
  height="400px" width="200px"/>
  <img src="https://github.com/rutvik4940/contact_app/assets/153794371/c30bd5e2-099f-4be2-a945-821b8417c655"
  height="400px" width="200px"/>
-https://github.com/rutvik4940/contact_app/assets/153794371/5385da23-8cff-4694-b90b-47635fc451ab
+
+https://github.com/rutvik4940/contact_app/assets/153794371/274c0b3f-760d-481c-914d-b6c6521538ac
 </p>
