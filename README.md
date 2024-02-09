@@ -1,3 +1,5 @@
+
+https://github.com/rutvik4940/contact_app/assets/153794371/d3027b93-eb92-4c57-987a-6cd5e09b08dd
 # contact_app
 
 A new Flutter project.
@@ -19,8 +21,5 @@ samples, guidance on mobile development, and a full API reference.
  height="400px" width="200px"/>
  <img src="https://github.com/rutvik4940/contact_app/assets/153794371/c30bd5e2-099f-4be2-a945-821b8417c655"
  height="400px" width="200px"/>
-
- 
- 
-  
+https://github.com/rutvik4940/contact_app/assets/153794371/5385da23-8cff-4694-b90b-47635fc451ab
 </p>
