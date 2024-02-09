@@ -1,5 +1,4 @@
 
-https://github.com/rutvik4940/contact_app/assets/153794371/d3027b93-eb92-4c57-987a-6cd5e09b08dd
 # contact_app
 
 A new Flutter project.
