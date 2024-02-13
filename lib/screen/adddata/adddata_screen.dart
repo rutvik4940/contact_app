@@ -40,15 +40,16 @@ class _AdddataScreenState extends State<AdddataScreen> {
                   height: 10,
                 ),
                 Stack(
-                  alignment: Alignment.center,
                   children: [
-                    CircleAvatar(
-                      radius: 60,
-                      backgroundImage:
-                          imageFile != null ? FileImage(imageFile!) : null,
+                    Center(
+                      child: CircleAvatar(
+                        radius: 60,
+                        backgroundImage:
+                            imageFile != null ? FileImage(imageFile!) : null,
+                      ),
                     ),
                     Align(
-                      alignment: Alignment(0.3,0.5),
+                      alignment: Alignment(0.3,0.3),
                       child: IconButton(
                         onPressed: () async {
                           ImagePicker picker = ImagePicker();
