@@ -1,3 +1,5 @@
+
+
 import 'dart:io';
 
 import 'package:contact_app/model/model.dart';
@@ -27,102 +29,117 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Home"),
-          centerTitle: true,
+          title: const Text("Mediator",style: TextStyle(fontWeight: FontWeight.bold)),
+          leading: const Icon(Icons.menu),
+          actions: [
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Icon(Icons.search_rounded),
+            ),
+          ],
         ),
         body: ListView.builder(
           itemCount: Contact.c1.conatctList.length,
           itemBuilder: (context, index) {
             DataModel get = Contact.c1.conatctList[index];
-            return InkWell(
-              onTap: () {
-                Navigator.pushNamed(context, 'detail');
-              },
-              child: Container(
-                margin: const EdgeInsets.all(10),
-                height: MediaQuery.of(context).size.height * 0.40,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Colors.primaries[index].shade200,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Align(
-                        alignment: Alignment.center,
-                        child: CircleAvatar(
-                          backgroundImage: FileImage(File("${get.image}")),
-                          radius: 50,
-                        ),
-                      ),
-                      Text(
-                        "Name: ${get.name}",
-                        style: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
+            return Column(
+              children: [
+                InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, 'detail',arguments: get);
+                  },
+
+
+                  child: Container(
+                    margin: const EdgeInsets.all(10),
+                    height: 80,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            CircleAvatar(
+                              backgroundImage: FileImage(File("${get.image}")),
+                              radius: 30,
                             ),
-                      ),
-                      Text(
-                        "Email : ${get.email}",
-                        style: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
+                           const SizedBox(width: 20,),
+                           Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                             children: [
+                               Text(
+                                 "${get.name}",
+                                 style: const TextStyle(
+                                   fontSize: 20,
+                                   fontWeight: FontWeight.bold,
+                                 ),
+                               ),
+                               Text(
+                                 "${get.mobile}",
+                                 style: const TextStyle(
+                                   fontSize: 20,
+                                 ),
+                               ),
+                             ],
+                           ),
+                            Spacer(),
+                            IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  Contact.c1.conatctList.removeAt(index);
+                                });
+                              },
+                              icon: Icon(Icons.delete, color: Colors.black),
                             ),
-                      ),
-                      Text(
-                        "Mobile Number: ${get.mobile}",
-                        style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
+                            IconButton(
+                              onPressed: () {
+                                DataModel t1 = Contact.c1.conatctList[index];
+                                txtname.text = t1.name!;
+                                txtemail.text = t1.email!;
+                                txtmoblie.text = t1.mobile!;
+                                addDialog(context,index);
+                              },
+                              icon: Icon(Icons.edit, color: Colors.black),
+                            )
+
+                          ],
                         ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          IconButton(
-                            onPressed: () {
-                              setState(() {
-                                Contact.c1.conatctList.removeAt(index);
-                              });
-                            },
-                            icon: Icon(Icons.delete, color: Colors.black),
-                          ),
-                          IconButton(
-                            onPressed: () {
-                              DataModel t1 = Contact.c1.conatctList[index];
-                              txtname.text = t1.name!;
-                              txtemail.text = t1.email!;
-                              txtmoblie.text = t1.mobile!;
-                              addDialog(context, index);
-                            },
-                            icon: Icon(Icons.edit, color: Colors.black),
-                          ),
-                        ],
-                      )
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
+              ],
             );
           },
+        ),
+        bottomNavigationBar: const Padding(
+          padding: EdgeInsets.all(10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Icon(Icons.home),
+              Icon(Icons.phone_in_talk),
+              Icon(Icons.notifications),
+              Icon(Icons.people_rounded),
+            ],
+          ),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             Navigator.pushNamed(context, "add").then(
-              (value) {
+                  (value) {
                 setState(() {});
               },
             );
           },
           child: const Icon(Icons.add),
         ),
+
       ),
     );
   }
-
   addDialog(BuildContext context, int index) {
     showDialog(
       context: context,
@@ -136,12 +153,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   alignment: Alignment.center,
                   children: [
                     CircleAvatar(
-                      radius: 90,
+                      radius: 50,
                       backgroundImage:
-                          imageFile != null ? FileImage(imageFile!) : null,
+                      imageFile != null ? FileImage(imageFile!) : null,
                     ),
                     Align(
-                      alignment: Alignment(0.5, 0.12),
+                      alignment: Alignment(0.5, 0.5),
                       child: IconButton(
                         onPressed: () async {
                           ImagePicker picker = ImagePicker();
@@ -190,7 +207,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ElevatedButton(
                 onPressed: () {
                   setState(
-                    () {
+                        () {
                       Contact.c1.conatctList[index] = DataModel(
                         name: txtname.text,
                         email: txtemail.text,
@@ -210,3 +227,4 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
